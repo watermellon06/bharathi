@@ -1,0 +1,30 @@
+# Write a dockerfile for basic appliacation using all components.
+STAGE 1: WRITE A CI/CD PIPLELINE --run all stages in jenkins
+STAGE 2:bring the code and dockerfile from github
+STAGE 3: Write pipleline code to run the website
+HINT: chmod 777 /var/run/docker.sock in terminal
+#
+
+
+pipeline {
+    agent any
+    stages {
+        stage('Code') {
+            steps {
+                git branch: 'main', url: 'https://github.com/watermellon06/bharathi.git'
+            }
+        }
+        stage('build'){
+            steps{
+                sh 'docker build -t myimage .'
+            
+            }
+        }
+        stage('Container'){
+              steps{
+                  sh 'docker run -d --name cont2 -p 1112:80 myimage'
+              }
+          }
+      
+    }
+}
