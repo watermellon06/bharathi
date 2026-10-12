@@ -1,0 +1,256 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fresh Dairy - Online Dairy Store</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7fff7;
+            color: #333;
+        }
+
+        header {
+            background-color: #218838;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        nav {
+            background-color: #176b2c;
+            padding: 12px;
+            text-align: center;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+        }
+
+        .hero {
+            background-color: #e1f5e5;
+            text-align: center;
+            padding: 50px 20px;
+        }
+
+        .hero h2 {
+            font-size: 32px;
+            color: #218838;
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            margin-bottom: 20px;
+        }
+
+        .hero button {
+            background-color: #218838;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .products {
+            padding: 35px 20px;
+            text-align: center;
+        }
+
+        .products h2 {
+            margin-bottom: 25px;
+            color: #218838;
+        }
+
+        .product-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .product-card {
+            background: white;
+            width: 230px;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px #ccc;
+        }
+
+        .product-card .emoji {
+            font-size: 65px;
+            margin-bottom: 15px;
+        }
+
+        .product-card h3 {
+            margin-bottom: 10px;
+        }
+
+        .price {
+            color: #218838;
+            font-weight: bold;
+            margin: 12px 0;
+            font-size: 18px;
+        }
+
+        .product-card button {
+            background-color: #218838;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .product-card button:hover,
+        .hero button:hover {
+            background-color: #145523;
+        }
+
+        #cart {
+            margin-top: 20px;
+            font-weight: bold;
+            color: #218838;
+        }
+
+        footer {
+            background-color: #176b2c;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 30px;
+        }
+
+        @media (max-width: 600px) {
+            nav a {
+                display: inline-block;
+                margin: 7px;
+            }
+
+            .hero h2 {
+                font-size: 25px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>🥛 Fresh Dairy</h1>
+        <p>Your Daily Dose of Freshness!</p>
+    </header>
+
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#products">Products</a>
+        <a href="#about">About Us</a>
+        <a href="#contact">Contact</a>
+    </nav>
+
+    <section class="hero" id="home">
+        <h2>Fresh Dairy Products Delivered to You</h2>
+        <p>Enjoy fresh milk, cheese, butter, curd and more every day.</p>
+        <button onclick="document.getElementById('products').scrollIntoView()">
+            Shop Now
+        </button>
+    </section>
+
+    <section class="products" id="products">
+        <h2>Our Dairy Products</h2>
+
+        <div class="product-container">
+
+            <div class="product-card">
+                <div class="emoji">🥛</div>
+                <h3>Fresh Milk</h3>
+                <p>Pure and nutritious milk.</p>
+                <p class="price">₹60 / litre</p>
+                <button onclick="addToCart('Fresh Milk', 60)">
+                    Add to Cart
+                </button>
+            </div>
+
+            <div class="product-card">
+                <div class="emoji">🧈</div>
+                <h3>Butter</h3>
+                <p>Rich and creamy butter.</p>
+                <p class="price">₹55 / 100g</p>
+                <button onclick="addToCart('Butter', 55)">
+                    Add to Cart
+                </button>
+            </div>
+
+            <div class="product-card">
+                <div class="emoji">🧀</div>
+                <h3>Cheese</h3>
+                <p>Delicious and fresh cheese.</p>
+                <p class="price">₹100 / 200g</p>
+                <button onclick="addToCart('Cheese', 100)">
+                    Add to Cart
+                </button>
+            </div>
+
+            <div class="product-card">
+                <div class="emoji">🥣</div>
+                <h3>Curd</h3>
+                <p>Fresh and creamy curd.</p>
+                <p class="price">₹35 / 500g</p>
+                <button onclick="addToCart('Curd', 35)">
+                    Add to Cart
+                </button>
+            </div>
+
+        </div>
+
+        <p id="cart">🛒 Cart: 0 items | Total: ₹0</p>
+    </section>
+
+    <section class="products" id="about">
+        <h2>About Us</h2>
+        <p>
+            Fresh Dairy provides quality dairy products for your family.
+            We believe in freshness, quality and customer satisfaction.
+        </p>
+    </section>
+
+    <section class="products" id="contact">
+        <h2>Contact Us</h2>
+        <p>Email: freshdairy@example.com</p>
+        <p>Phone: +91 98765 43210</p>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Fresh Dairy. All rights reserved.</p>
+    </footer>
+
+    <script>
+        let cartItems = 0;
+        let totalPrice = 0;
+
+        function addToCart(product, price) {
+            cartItems++;
+            totalPrice += price;
+
+            document.getElementById("cart").textContent =
+                "🛒 Cart: " + cartItems +
+                " items | Total: ₹" + totalPrice;
+
+            alert(product + " added to your cart!");
+        }
+    </script>
+
+</body>
+</html>
